@@ -78,7 +78,7 @@
         <div x-data>
           <template x-for="task in $store.app.tasks" :key="task.id">
             <div
-              class="relative mt-5 border-[6px] border-accent rounded-t-[10px] rounded-b-[20px] p-5 pb-2.5 task-box"
+              class="relative mt-5 border-[6px] border-accent rounded-t-[10px] rounded-b-[20px] p-2.5 task-box"
               :style="`border-color: ${task.color}`"
             >
               <textarea
@@ -86,7 +86,7 @@
                 x-model="task.text"
                 @input="$store.app.saveStateChanges()"
                 placeholder="What is Your Task"
-                class="w-full hide-scrollbar resize-none outline-0 min-h-[100px] text-lg sm:text-xl font-medium"
+                class="w-full hide-scrollbar resize-none outline-0 min-h-[120px] text-lg font-medium"
               ></textarea>
 
               <div class="flex items-center justify-between">
