@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@theme {
+  --color-accent: #3EFF0E;
+  --color-pure: #ffffff;
+
+  --color-primary-text: #111111;
+
+  --font-base: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-base);
+  color: var(--color-primary-text);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
+}
+
+.hide-arrow {
+  -webkit-appearance: none; 
+  -moz-appearance: none;    
+  appearance: none;         
+  background-image: none;   
+}
+
+
+
+.mobile_menu {
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: circle(0% at 100% 0);
+  transition: clip-path 500ms ease, opacity 300ms ease;
+}
+
+/* Active menu state */
+.mobile_menu.open_menu {
+  user-select: auto;
+  pointer-events: all;
+  opacity: 1;
+  clip-path: circle(150% at 100% 0);
+}
+
+
