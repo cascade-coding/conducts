@@ -49,7 +49,23 @@ if (typeof window !== 'undefined') {
 
 
     saveStateChanges: debounce(function (this: any) {
-      update_tasks_storage(this.tasks)
+      // update_tasks_storage(this.tasks)
+
+      const container = document.querySelector<HTMLElement>('#tasks-container');
+
+      if (!container) return;
+
+      const orderedIds = Array.from(container.children)
+        .map(el => el.getAttribute('data-id'))
+        .filter(id => id !== null);
+
+
+      const newTasksOrder = orderedIds.map(id =>
+        this.tasks.find((task: Task) => task.id === id)!
+      );
+
+      update_tasks_storage(newTasksOrder)
+
     }, 1000),
 
     deleteTask(task) {
@@ -106,7 +122,7 @@ Alpine.nextTick(() => {
     handle: '.task-box',
     animation: 150,
     dataIdAttr: 'data-id',
-    onUpdate: (evt) => {
+    onUpdate: () => {
       const store = getAppStore();
 
       const orderedIds = Array.from(container.children)
