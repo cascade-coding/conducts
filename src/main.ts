@@ -1,5 +1,7 @@
 import Alpine from 'alpinejs';
 import Swal from 'sweetalert2';
+import Sortable from 'sortablejs';
+
 import { icons } from './icons';
 import type { AppStore, Task } from './types';
 import { check_task_type, clear_tasks_storage, debounce, generate_task_id, update_tasks_storage } from './services';
@@ -95,9 +97,39 @@ if (typeof window !== 'undefined') {
 }
 
 
-const getAppStore = (): AppStore => Alpine.store('app') as AppStore;
+Alpine.nextTick(() => {
+  const container = document.querySelector<HTMLElement>('#tasks-container');
+  if (!container) return;
 
 
+  Sortable.create(container, {
+    handle: '.task-box',
+    animation: 150,
+    dataIdAttr: 'data-id',
+    onUpdate: (evt) => {
+      const store = getAppStore();
+
+      const orderedIds = Array.from(container.children)
+        .map(el => el.getAttribute('data-id'))
+        .filter(id => id !== null);
+
+
+      const newTasksOrder = orderedIds.map(id =>
+        store.tasks.find(task => task.id === id)!
+      );
+
+      // store.setTasks([...newTasksOrder]);
+
+      localStorage.setItem('tasks', JSON.stringify(newTasksOrder));
+    }
+  });
+});
+
+
+
+function getAppStore(): AppStore {
+  return Alpine.store('app') as AppStore;
+}
 
 
 

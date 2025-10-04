@@ -75,11 +75,12 @@
     <section class="mt-[60px] pb-[200px] min-h-dvh">
       <div class="max-w-[1000px] mx-auto px-2">
         <!-- Tasks/Inputs -->
-        <div x-data>
+        <div id="tasks-container" x-data>
           <template x-for="task in $store.app.tasks" :key="task.id">
             <div
               class="relative mt-5 border-[6px] border-accent rounded-t-[10px] rounded-b-[20px] p-2.5 task-box"
               :style="`border-color: ${task.color}`"
+              :data-id="task.id"
             >
               <textarea
                 name="text"
