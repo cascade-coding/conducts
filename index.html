@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,8 +25,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
     <title>Conducts</title>
-    <script type="module" crossorigin src="/conducts/assets/index-vEwp9kHJ.js"></script>
-    <link rel="stylesheet" crossorigin href="/conducts/assets/index-CtB4-WFx.css">
+    <script type="module" crossorigin src="/conducts/assets/index-CZwfJvmU.js"></script>
+    <link rel="stylesheet" crossorigin href="/conducts/assets/index-Bp2qo2Zh.css">
   </head>
   <body>
     <!-- Start: Top Header -->
@@ -79,7 +79,7 @@
         <div x-data>
           <template x-for="task in $store.app.tasks" :key="task.id">
             <div
-              class="relative mt-5 border-[6px] border-accent rounded-t-[10px] rounded-b-[20px] p-5 pb-2.5 task-box"
+              class="relative mt-5 border-[6px] border-accent rounded-t-[10px] rounded-b-[20px] p-2.5 task-box"
               :style="`border-color: ${task.color}`"
             >
               <textarea
@@ -87,7 +87,7 @@
                 x-model="task.text"
                 @input="$store.app.saveStateChanges()"
                 placeholder="What is Your Task"
-                class="w-full hide-scrollbar resize-none outline-0 min-h-[100px] text-lg sm:text-xl font-medium"
+                class="w-full hide-scrollbar resize-none outline-0 min-h-[120px] text-lg font-medium"
               ></textarea>
 
               <div class="flex items-center justify-between">
@@ -145,6 +145,6 @@
       </div>
     </section>
     <!-- End: App -->
-
+
   </body>
 </html>
